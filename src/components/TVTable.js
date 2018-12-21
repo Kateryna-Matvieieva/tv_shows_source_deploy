@@ -15,7 +15,19 @@ const TVTable = ({ state }) => {
   <div>
     <Pagination />
     <table>
-       
+        <tr>
+          <th>№</th>
+          <th>Title</th>
+          <th>Popularity</th>
+          <th>First air date</th> 
+          <th>Ganre</th>
+          <th>Description</th>
+        </tr>
+        <tbody>
+          {state.data.map((item, index) => (
+            <TVShows key={index} item={ item } img={state.imgs[index]} genres={state.genres} index={state.currentPage*20-19+index}/>
+          ))}
+        </tbody>
     </table>
     <Pagination />
   </div>

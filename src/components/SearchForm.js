@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {  } from '../actions/actions'
+import { fetchTableData } from '../actions/actions'
 
 let SearchForm = ({ dispatch }) => {
   let input
@@ -13,7 +13,7 @@ let SearchForm = ({ dispatch }) => {
           if (!input.value.trim()) {
             return
           }
-          dispatch() //action creater
+          dispatch(fetchTableData({ query: input.value }))
           input.value = ''
         }}
       >

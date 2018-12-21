@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Header';
 import TVTable from './TVTable';
 import { connect } from 'react-redux';
-import { fetchTableData, fetchgenres } from '../actions/actions';
+import { fetchTableData, fetchGenres } from '../actions/actions';
 
 class App extends Component {
   componentDidMount() {
@@ -25,7 +25,7 @@ class App extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLoad: () => {
-      dispatch(fetchgenres())
+      dispatch(fetchGenres())
         dispatch(fetchTableData());
 
     }
