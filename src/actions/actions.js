@@ -64,7 +64,7 @@ export function fetchGenres() {
 
 let prevFilter = 'popular';
 let counter = 1;
-export function fetchTableData(type = prevFilter, prev, page = counter, next, query) {
+export function fetchTableData({type = prevFilter, prev, page = counter, next, query}) {
     let url;
     if (prev && page > 1)
         --page;

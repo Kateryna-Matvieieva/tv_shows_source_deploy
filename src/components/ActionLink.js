@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import {  } from '../actions/actions';
+import { fetchTableData } from '../actions/actions';
 import Link from './Link';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: () => {
-        dispatch();
+    onClick: ({filter, prev, page, next, query}) => {
+        dispatch(fetchTableData({filter, prev, page, next, query}));
     }
   }
 }
