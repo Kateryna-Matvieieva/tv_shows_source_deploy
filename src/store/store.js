@@ -12,7 +12,6 @@ const initialState = {
     option: null,
     countOfPages: 1000,
     currentPage: 1,
-    
   }
   
 export const store = createStore(rootReducer, initialState,  applyMiddleware(thunk, logger))

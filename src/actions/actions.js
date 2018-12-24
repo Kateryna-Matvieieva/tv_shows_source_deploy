@@ -9,7 +9,7 @@ import {
 } from '../constants/constants';
 import fetch from 'isomorphic-fetch';
 
-export const response = ({ results, page }) => ({
+export const loadData = ({ results, page }) => ({
     type: GET_RESPONSE,
     payload: {
         results,
@@ -51,15 +51,14 @@ export const isLoading = (loading) => ({
 //   };
 // }
 export function fetchGenres() {
-    return (dispatch) => {
-        fetch(`https://api.themoviedb.org/3/genre/tv/list?&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`)
-            .then(res => {
-                return res.json()
-            })
-            .then(res => {
-                dispatch(genres(res));
-            })
-            .catch(() => dispatch(error(true)));
+    return async (dispatch) => {
+        let response = await fetch(`https://api.themoviedb.org/3/genre/tv/list?&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`);
+        if (response.status !== 200) {
+            dispatch(error(true));
+        } else {
+            let data = await response.json();
+            dispatch(genres(data));
+       }
     };
 }
 
@@ -76,22 +75,20 @@ export function fetchTableData({type = prevFilter, prev, page = counter, next, q
         page = 1;
     if (query)
         url = `https://api.themoviedb.org/3/search?query=${query}&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(isLoading(true));
-        fetch(url || `https://api.themoviedb.org/3/tv/${type}?page=${ page }&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`)
-            .then(res => {
-                return res.json()
-            })
-            .then(res => {
-                if (type !== prevFilter) {
-                    dispatch(pages(res));
-                    dispatch(filter(res))
-                }
-                dispatch(response(res));
-                prevFilter = type;
-                counter = page;
-
-            })
-            .catch(() => dispatch(error(true)));
+        let response = await fetch(url || `https://api.themoviedb.org/3/tv/${type}?page=${ page }&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`);
+        if (response.status !== 200) {
+            dispatch(error(true));
+        } else {
+            let data = await response.json();
+            if (type !== prevFilter) {
+                dispatch(pages(data));
+                dispatch(filter(data))
+            }
+            dispatch(loadData(data));
+            prevFilter = type;
+            counter = page;
+        }
     };
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import TVShows from './TVShows';
 import Pagination from './Pagination';
@@ -15,6 +15,7 @@ const TVTable = ({ state }) => {
   <div>
     <Pagination />
     <table>
+    <tbody>
         <tr>
           <th>№</th>
           <th>Title</th>
@@ -23,7 +24,6 @@ const TVTable = ({ state }) => {
           <th>Ganre</th>
           <th>Description</th>
         </tr>
-        <tbody>
           {state.data.map((item, index) => (
             <TVShows key={index} item={ item } img={state.imgs[index]} genres={state.genres} index={state.currentPage*20-19+index}/>
           ))}

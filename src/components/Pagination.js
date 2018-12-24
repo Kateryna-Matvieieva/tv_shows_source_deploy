@@ -11,7 +11,7 @@ class Pagination extends Component {
           <p>Page {this.props.currentPage} from {this.props.countOfPages}</p>
           <ActionLink>prev</ActionLink>
           {arr.map((item, index) => (
-              <ActionLink>{this.props.currentPage+index}</ActionLink>
+              <ActionLink key={index}>{this.props.currentPage+index}</ActionLink>
               ))}
           <ActionLink>next</ActionLink>
       </div>
