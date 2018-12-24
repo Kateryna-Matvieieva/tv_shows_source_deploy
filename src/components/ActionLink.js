@@ -4,8 +4,8 @@ import Link from './Link';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: ({filter, prev, page, next, query}) => {
-        dispatch(fetchTableData({filter, prev, page, next, query}));
+    onClick: ({type, prev, page, next, query}) => {
+        dispatch(fetchTableData({type, prev, page, next, query}));
     }
   }
 }

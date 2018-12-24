@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLoad: () => {
       dispatch(fetchGenres())
-        dispatch(fetchTableData());
+        dispatch(fetchTableData({}));
 
     }
   }

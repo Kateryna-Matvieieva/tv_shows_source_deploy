@@ -10,13 +10,13 @@ const Link = ({ children, onClick }) => {
         e.preventDefault()
          switch(children) {
             case 'Popular':
-                onClick({ filter: 'popular' });
+                onClick({ type: 'popular' });
                 break;
             case 'On the air':
-                onClick({ filter: 'on_the_air'});
+                onClick({ type: 'on_the_air'});
                 break;
             case 'Top':
-                onClick({ filter: 'top_rated' });
+                onClick({ type: 'top_rated' });
                 break;
             case 'next':
                 onClick({ next: true });

@@ -7,6 +7,7 @@ import {
     GET_OPTIONAL_DATA,
     GET_GENRES
 } from '../constants/constants';
+import fetch from 'isomorphic-fetch';
 
 export const response = ({ results, page }) => ({
     type: GET_RESPONSE,
@@ -65,6 +66,7 @@ export function fetchGenres() {
 let prevFilter = 'popular';
 let counter = 1;
 export function fetchTableData({type = prevFilter, prev, page = counter, next, query}) {
+    console.log(arguments);
     let url;
     if (prev && page > 1)
         --page;

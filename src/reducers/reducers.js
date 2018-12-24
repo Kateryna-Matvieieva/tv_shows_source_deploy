@@ -5,11 +5,11 @@ import {
       GET_RESPONSE,
       GET_OPTIONAL_DATA,
       GET_GENRES
-  } from '../actions/actions';
+  } from '../constants/constants';
 
 
 
-export default function rootReducer (state, action) {
+export function rootReducer (state, action) {
           switch(action.type) {
             case GET_GENRES:
               let genres = {};
