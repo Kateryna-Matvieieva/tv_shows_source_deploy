@@ -1,16 +1,21 @@
 import { connect } from 'react-redux';
 import { fetchTableData } from '../actions/asyncActions';
 import Link from './Link';
-
+function mapStateToProps (state) {
+  return {
+    currentPage: state.currentPage,
+    countOfPages: state.countOfPages
+  }
+}
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: ({type, prev, page, next, query}) => {
-        dispatch(fetchTableData({type, prev, page, next, query}));
+    onClick: ({filterType, page, query}) => {
+        dispatch(fetchTableData({filterType, page, query}));
     }
   }
 }
 
-const ActionLink = connect( null,
+const ActionLink = connect( mapStateToProps,
   mapDispatchToProps
 )(Link)
 

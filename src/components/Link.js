@@ -1,28 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Link = ({ children, onClick }) => {
+const Link = ({ children, onClick, currentPage }) => {
   return (
 
     <a
       href="/"
       onClick={e => {
-        e.preventDefault()
+        e.preventDefault();
+        let page;
          switch(children) {
             case 'Popular':
-                onClick({ type: 'popular' });
+                onClick({ filterType: 'popular' });
                 break;
             case 'On the air':
-                onClick({ type: 'on_the_air'});
+                onClick({ filterType: 'on_the_air'});
                 break;
             case 'Top':
-                onClick({ type: 'top_rated' });
+                onClick({ filterType: 'top_rated' });
                 break;
             case 'next':
-                onClick({ next: true });
+                page = ++currentPage;
+                onClick({ page });
                 break;
             case 'prev':
-                onClick({ prev: true });
+                page = --currentPage;
+                onClick({ page });
                 break;
             default:
                 break;

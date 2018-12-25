@@ -22,23 +22,25 @@ let counter = 1;
 let prevQuery;
 function fetchTableDataDecorator(wrapped) {
     return function() {
-      console.log('Starting');
       let obj = Object.assign({page: counter, query: prevQuery}, arguments[0]);
-      if (obj.prev && obj.page > 1) // replace with ternary prev && page
-          obj.page -=1;
-      if (obj.next)
-           obj.page +=1;
-      if (((obj.type || prevFilter) !== prevFilter) || (obj.query !== obj.prevQuery)) {
+      //if obj.filterType does not exist (obj.filterType || prevFilter) means that we use the same filter type and can go to any page
+      // (obj.filterType || prevFilter) - if obj.filterType and prevFilter exist, return obj.filterType (- current filter type)
+      //compare with prev filter type
+      //if they are different, we want to see new filtered table from the first page
+      // another case: exist current query that different from prev query
+      //in this case we want to see new table of query data from the first page
+      if (((obj.filterType || prevFilter) !== prevFilter) || (obj.query !== obj.prevQuery)) {
           obj.page = 1;
+          console.log('type, prevFilter',obj.filterType, prevFilter, obj.filterType || prevFilter)
       }
-      (obj.query && !obj.type) ?
-          obj.url = `${src}/search/tv?query=${obj.query}&page=${obj.page}${key}` : obj.url = `${src}/tv/${obj.type?obj.type:prevFilter?prevFilter:'popular'}?page=${ obj.page }${key}`;
+      (obj.query && !obj.filterType) ?
+          obj.url = `${src}/search/tv?query=${obj.query}&page=${obj.page}${key}` : obj.url = `${src}/tv/${obj.filterType?obj.filterType:prevFilter?prevFilter:'popular'}?page=${ obj.page }${key}`;
     
       return wrapped.apply(this, [obj]);
   
     }
   }
-function fetchData({type, page, query, url}) {
+function fetchData({filterType, page, query, url}) {
     return async (dispatch) => {
         dispatch(isLoading(true));
         let response = await fetch(url);
@@ -46,47 +48,16 @@ function fetchData({type, page, query, url}) {
             dispatch(error(true));
         } else {
             let data = await response.json();
-            if (((type || prevFilter) !== prevFilter) || query) {
+            if (((filterType || prevFilter) !== prevFilter) || query) {
                 dispatch(pages(data));
                 dispatch(filter(data));
             }
             dispatch(loadData(data));
-            prevFilter = type;
+            prevFilter = filterType;
             counter = page;
-            type? prevQuery = undefined: prevQuery = query;
+            filterType ? prevQuery = undefined: prevQuery = query;
             
         }
     };
 }
 export const fetchTableData = fetchTableDataDecorator(fetchData);
-// export function fetchTableData({type, prev, page = counter, next, query=prevQuery}) {
-//     let url;
-//     if (prev && page > 1) // replace with ternary prev && page
-//         --page;
-//     if (next && page)
-//         ++page;
-//     if (((type || prevFilter) !== prevFilter) || (query !== prevQuery)) {
-//         page = 1;
-//     }
-//     if (query && !type) {
-//         url = `https://api.themoviedb.org/3/search/tv?query=${query}&page=${page}&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`
-//     }
-//     return async (dispatch) => {
-//         dispatch(isLoading(true));
-//         let response = await fetch(url || `https://api.themoviedb.org/3/tv/${type?type:prevFilter?prevFilter:'popular'}?page=${ page }&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`);
-//         if (response.status !== 200) {
-//             dispatch(error(true));
-//         } else {
-//             let data = await response.json();
-//             if (((type || prevFilter) !== prevFilter) || query) {
-//                 dispatch(pages(data));
-//                 dispatch(filter(data));
-//             }
-//             prevFilter = type;
-//             counter = page;
-//             type? prevQuery = undefined: prevQuery = query;
-//             dispatch(loadData(data));
-//         }
-//     };
-// }
-
