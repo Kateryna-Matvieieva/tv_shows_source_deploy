@@ -4,7 +4,8 @@ import ActionLink from './ActionLink'
 
 class Pagination extends Component {
   render() {
-    let arr = new Array (9).fill(undefined);
+    let num=  this.props.countOfPages> 9 ? 9 : this.props.countOfPages;
+    let arr = new Array (num).fill(undefined);
     
     return (
       <div>

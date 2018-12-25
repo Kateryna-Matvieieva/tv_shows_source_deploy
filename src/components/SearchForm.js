@@ -1,19 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTableData } from '../actions/actions'
+import { fetchTableData } from '../actions/asyncActions'
 
-let SearchForm = ({ dispatch }) => {
-  let input
+let SearchForm = ({ dispatch, val }) => {
+  let input;
+  let handler = (e) => {
+    e.preventDefault()
+    if (!input.value.trim()) {
+      return
+    }
+    dispatch(fetchTableData({ query: encodeURIComponent(input.value)}))
+  }
 
   return (
     <div>
       <form
-        onSubmit={e => {
-          e.preventDefault()
-          if (!input.value.trim()) {
-            return
-          }
-          dispatch(fetchTableData({ query: input.value }))
+       onChange = {e => {
+        handler(e)
+        }}
+        onSubmit ={e => {
+          handler(e)
           input.value = ''
         }}
       >
@@ -21,6 +27,7 @@ let SearchForm = ({ dispatch }) => {
           ref={node => {
             input = node
           }}
+          //value={val}
         />
         <button type="submit">Search TV Show</button>
       </form>

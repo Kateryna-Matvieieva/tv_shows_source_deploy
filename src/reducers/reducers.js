@@ -27,7 +27,7 @@ export function rootReducer (state, action) {
             case GET_RESPONSE:
               let imgs = action.payload.results.map(item => {
                   let obj = new Image ();
-                  obj.src = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/'+item.poster_path;
+                  obj.src = item.poster_path ? 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/'+item.poster_path : 'download.png';
                   return obj;
               });
               return {

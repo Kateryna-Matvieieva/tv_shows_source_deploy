@@ -32,7 +32,7 @@ const Link = ({ children, onClick }) => {
         
       }}
     >
-      {children}
+      <button>{children}</button>
     </a>
   )
 }

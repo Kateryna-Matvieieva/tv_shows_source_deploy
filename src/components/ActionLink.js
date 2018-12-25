@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchTableData } from '../actions/actions';
+import { fetchTableData } from '../actions/asyncActions';
 import Link from './Link';
 
 const mapDispatchToProps = (dispatch) => {

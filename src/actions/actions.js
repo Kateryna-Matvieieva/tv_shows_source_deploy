@@ -7,7 +7,6 @@ import {
     GET_OPTIONAL_DATA,
     GET_GENRES
 } from '../constants/constants';
-import fetch from 'isomorphic-fetch';
 
 export const loadData = ({ results, page }) => ({
     type: GET_RESPONSE,
@@ -43,52 +42,4 @@ export const isLoading = (loading) => ({
     type: START_REQUEST,
     payload: loading
 })
-// export function errorAfterFiveSeconds() {
-//   return (dispatch) => {
-//       setTimeout(() => {
-//           dispatch(error());
-//       }, 5000);
-//   };
-// }
-export function fetchGenres() {
-    return async (dispatch) => {
-        let response = await fetch(`https://api.themoviedb.org/3/genre/tv/list?&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`);
-        if (response.status !== 200) {
-            dispatch(error(true));
-        } else {
-            let data = await response.json();
-            dispatch(genres(data));
-       }
-    };
-}
 
-let prevFilter = 'popular';
-let counter = 1;
-export function fetchTableData({type = prevFilter, prev, page = counter, next, query}) {
-    console.log(arguments);
-    let url;
-    if (prev && page > 1)
-        --page;
-    if (next && page)
-        ++page;
-    if (type !== prevFilter)
-        page = 1;
-    if (query)
-        url = `https://api.themoviedb.org/3/search?query=${query}&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`
-    return async (dispatch) => {
-        dispatch(isLoading(true));
-        let response = await fetch(url || `https://api.themoviedb.org/3/tv/${type}?page=${ page }&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`);
-        if (response.status !== 200) {
-            dispatch(error(true));
-        } else {
-            let data = await response.json();
-            if (type !== prevFilter) {
-                dispatch(pages(data));
-                dispatch(filter(data))
-            }
-            dispatch(loadData(data));
-            prevFilter = type;
-            counter = page;
-        }
-    };
-}

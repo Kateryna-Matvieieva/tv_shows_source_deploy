@@ -3,14 +3,13 @@ import './App.css';
 import Header from './Header';
 import TVTable from './TVTable';
 import { connect } from 'react-redux';
-import { fetchTableData, fetchGenres } from '../actions/actions';
+import { fetchTableData, fetchGenres } from '../actions/asyncActions';
 
 class App extends Component {
   componentDidMount() {
     this.props.onLoad()
   }
   render() {
-    console.log('app props ', );
     return (
       <div>
         <Header />

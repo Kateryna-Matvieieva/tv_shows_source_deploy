@@ -7,7 +7,7 @@ const TVShows = ({ item, img, genres, index }) => (
     <td>{index}</td>
     <td>{item.name}
       {/* <img src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2/'+item.poster_path} /> */}
-      <img src={img.src} width="185" height="278" />
+      <img src={img.src || '../download.png'} width="185" height="278" />
     </td>
     <td>{Math.round(item.popularity)}</td>
     <td>{item.first_air_date.replace(/-/g, '/')}</td>

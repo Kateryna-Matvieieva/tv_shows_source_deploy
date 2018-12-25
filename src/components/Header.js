@@ -5,7 +5,6 @@ import SearchForm from './SearchForm';
 
 export default class Header extends Component {
   render() {
-    console.log('header', this.props);
     return (
       <header>
           <h1>Your favorite TV-shows</h1>
