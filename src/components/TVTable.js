@@ -13,6 +13,7 @@ const TVTable = ({ state }) => {
   }
   return (
   <div>
+    <h2>{state.query ? `The result on "${state.query }" query search` : `TV Shows filtered by "${state.filter}"`}</h2>
     <Pagination />
     <table>
     <tbody>

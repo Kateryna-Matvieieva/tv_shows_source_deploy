@@ -1,9 +1,10 @@
 import {    
       START_REQUEST,
-      COUNT_OF_PAGES, FILTER,
+      GET_COUNT_OF_PAGES,
+      GET_FILTER,
+      GET_QUERY,
       GET_ERROR,
       GET_RESPONSE,
-      GET_OPTIONAL_DATA,
       GET_GENRES
   } from '../constants/constants';
 
@@ -37,15 +38,22 @@ export function rootReducer (state, action) {
                 imgs,
                 loading: false
               };
-            case COUNT_OF_PAGES:
+            case GET_COUNT_OF_PAGES:
               return {
                 ...state,
                 ...action.payload
               };
-            case FILTER:
+            case GET_FILTER:
               return {
                 ...state,
-                ...action.payload
+                filter: action.payload,
+                query: ''
+              };
+            case GET_QUERY:
+              return {
+                ...state,
+                query: action.payload,
+                filter: ''
               };
             case GET_ERROR:
               return {

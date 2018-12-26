@@ -1,10 +1,10 @@
 import fetch from 'isomorphic-fetch';
 import {
-    loadData,
-    pages,
-    genres,
-    filter,
-    optional,
+    setData,
+    setPages,
+    setGenres,
+    setFilter,
+    setQuery,
     error,
     isLoading
 } from './actions';
@@ -18,7 +18,7 @@ export function fetchGenres() {
             dispatch(error(true));
         } else {
             let data = await response.json();
-            dispatch(genres(data));
+            dispatch(setGenres(data));
         }
     };
 }
@@ -67,14 +67,14 @@ function fetchData({
         } else {
             let data = await response.json();
             if (((filterType || prevFilter) !== prevFilter) || query) {
-                dispatch(pages(data));
-                dispatch(filter(data));
+                dispatch(setPages(data));
             }
+            query ? dispatch(setQuery(query)) : dispatch(setFilter(filterType || prevFilter));
             prevFilter = filterType;
             counter = page;
             filterType ? prevQuery = undefined : prevQuery = query;
             filterType === 'recommendations' || filterType === 'similar' ? prevId = id :  prevId = undefined;
-            dispatch(loadData(data));
+            dispatch(setData(data));
         }
     };
 }
