@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import ActionLink from './ActionLink'
 
-class Pagination extends Component {
-  render() {
-    let num=  this.props.countOfPages> 9 ? 9 : this.props.countOfPages;
+const Pagination = ({currentPage, countOfPages}) => {
+    let num=  countOfPages > 9 ? 9 : countOfPages;
     let arr = new Array (num).fill(undefined);
     
     return (
       <div>
-          <p>Page {this.props.currentPage} from {this.props.countOfPages}</p>
+          <p>Page {currentPage} from {countOfPages}</p>
           <ActionLink>prev</ActionLink>
           {arr.map((item, index) => (
-              <ActionLink key={index}>{this.props.currentPage+index}</ActionLink>
+              <ActionLink key={index}>{currentPage < countOfPages-currentPage ? currentPage + index : countOfPages + index +1 - arr.length}</ActionLink>
               ))}
           <ActionLink>next</ActionLink>
       </div>
     );
-  }
 }
 function mapStateToProps (state) {
     return {
