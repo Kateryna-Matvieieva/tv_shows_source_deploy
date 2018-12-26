@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Link = ({ children, showId, onClick, currentPage, countOfPages }) => {
+const Link = ({ children, showId, onClick, currentPage, countOfPages, name }) => {
   return (
 
     <a
@@ -21,10 +21,10 @@ const Link = ({ children, showId, onClick, currentPage, countOfPages }) => {
                 onClick({ filterType: 'top_rated' });
                 break;
             case 'Recommendations':
-                onClick({ filterType: 'recommendations', id: showId });
+                onClick({ filterType: 'recommendations', id: showId, name });
                 break;
             case 'Similar':
-                onClick({ filterType: 'similar', id: showId });
+                onClick({ filterType: 'similar', id: showId, name });
                 break;
             case 'next':
                 currentPage < countOfPages ? page = ++currentPage : page = countOfPages;

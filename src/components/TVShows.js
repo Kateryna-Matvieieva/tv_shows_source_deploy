@@ -17,8 +17,8 @@ const TVShows = ({ item, img, genres, index }) => (
         onMouseLeave={(e) =>  e.currentTarget.innerText = item.overview.slice(0, 350)+'.....'}
             >{item.overview.slice(0, 350)+'.....'}</td>
      <td>
-       <ActionLink showId = {item.id}>Recommendations</ActionLink>
-       <ActionLink showId = {item.id}>Similar</ActionLink>
+       <ActionLink showId = {item.id} name = {item.name}>Recommendations</ActionLink>
+       <ActionLink showId = {item.id} name = {item.name}>Similar</ActionLink>
      </td>
   </tr>
 )

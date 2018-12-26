@@ -9,9 +9,10 @@ const initialState = {
     loading: true,
     error: false,
     filter: '',
+    name: '',
     query: '',
     option: null,
-    countOfPages: 1000,
+    countOfPages: 1,
     currentPage: 1,
   }
   

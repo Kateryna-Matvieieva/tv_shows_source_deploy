@@ -9,7 +9,7 @@ let SearchForm = ({ dispatch, val }) => {
     if (!input.value.trim()) {
       return
     }
-    dispatch(fetchTableData({ query: encodeURIComponent(input.value)}))
+    dispatch(fetchTableData({ query: encodeURIComponent(input.value.trim())}))
   }
 
   return (

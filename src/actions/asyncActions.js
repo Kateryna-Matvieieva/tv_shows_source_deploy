@@ -27,6 +27,7 @@ let prevFilter = 'popular';
 let counter = 1;
 let prevQuery;
 let prevId;
+let initial = true;
 
 function fetchTableDataDecorator(func) {
     return function () {
@@ -57,7 +58,8 @@ function fetchData({
     page,
     query,
     url,
-    id
+    id,
+    name
 }) {
     return async (dispatch) => {
         dispatch(isLoading(true));
@@ -66,14 +68,16 @@ function fetchData({
             dispatch(error(true));
         } else {
             let data = await response.json();
-            if (((filterType || prevFilter) !== prevFilter) || query) {
+            if (((filterType || prevFilter) !== prevFilter) || query || initial) {
                 dispatch(setPages(data));
+                query ? dispatch(setQuery(query)) : dispatch(setFilter((filterType || prevFilter), name));
             }
-            query ? dispatch(setQuery(query)) : dispatch(setFilter(filterType || prevFilter));
+            
             prevFilter = filterType;
             counter = page;
             filterType ? prevQuery = undefined : prevQuery = query;
             filterType === 'recommendations' || filterType === 'similar' ? prevId = id :  prevId = undefined;
+            initial = false;
             dispatch(setData(data));
         }
     };

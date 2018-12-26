@@ -46,14 +46,15 @@ export function rootReducer (state, action) {
             case GET_FILTER:
               return {
                 ...state,
-                filter: action.payload,
+                filter: action.payload.filter.replace(/_/g, ' '),
+                name: action.payload.name,
                 query: ''
               };
             case GET_QUERY:
               return {
                 ...state,
-                query: action.payload,
-                filter: ''
+                query: decodeURIComponent(action.payload),
+                filter: '',
               };
             case GET_ERROR:
               return {

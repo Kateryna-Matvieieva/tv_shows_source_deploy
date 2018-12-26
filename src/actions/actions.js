@@ -26,9 +26,9 @@ export const setGenres = ({ genres }) => ({
     payload: genres
 
 })
-export const setFilter = (filter) => ({
+export const setFilter = (filter, name) => ({
     type: GET_FILTER,
-    payload: filter
+    payload: {filter, name}
 })
 export const setQuery = (query) => ({
     type: GET_QUERY,
