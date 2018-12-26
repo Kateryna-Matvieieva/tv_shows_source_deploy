@@ -14,7 +14,7 @@ export function rootReducer (state, action) {
           switch(action.type) {
             case GET_GENRES:
               let genres = {};
-              action.payload.forEach(item => genres[item.id] = item.name)
+              action.payload.forEach(item => {genres[item.id] = item.name})
               return {
                 ...state,
                 genres

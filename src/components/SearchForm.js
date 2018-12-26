@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchTableData } from '../actions/asyncActions'
 
-let SearchForm = ({ dispatch, val }) => {
+let SearchForm = ({ dispatch }) => {
   let input;
   let handler = (e) => {
     e.preventDefault()

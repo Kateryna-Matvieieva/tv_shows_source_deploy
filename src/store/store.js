@@ -11,7 +11,6 @@ const initialState = {
     filter: '',
     name: '',
     query: '',
-    option: null,
     countOfPages: 1,
     currentPage: 1,
   }

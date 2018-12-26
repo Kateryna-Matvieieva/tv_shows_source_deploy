@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ActionLink from './ActionLink'
+import ActionLink from './ActionLink';
+import PageForm from './PageForm';
 
 const Pagination = ({currentPage, countOfPages}) => {
     let num=  countOfPages > 9 ? 9 : countOfPages;
@@ -14,6 +15,7 @@ const Pagination = ({currentPage, countOfPages}) => {
               <ActionLink key={index}>{currentPage < countOfPages-currentPage ? currentPage + index : countOfPages + index +1 - arr.length}</ActionLink>
               ))}
           <ActionLink>next</ActionLink>
+          <PageForm />
       </div>
     );
 }

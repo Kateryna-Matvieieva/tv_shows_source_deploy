@@ -61,6 +61,7 @@ function fetchData({
     id,
     name
 }) {
+    console.log(url);
     return async (dispatch) => {
         dispatch(isLoading(true));
         let response = await fetch(url);
@@ -68,17 +69,22 @@ function fetchData({
             dispatch(error(true));
         } else {
             let data = await response.json();
-            if (((filterType || prevFilter) !== prevFilter) || query || initial) {
-                dispatch(setPages(data));
-                query ? dispatch(setQuery(query)) : dispatch(setFilter((filterType || prevFilter), name));
+            if (data.results.length<1) {
+                dispatch(error(true));
+            } else {
+                if (((filterType || prevFilter) !== prevFilter) || query || initial) {
+                    dispatch(setPages(data));
+                    query ? dispatch(setQuery(query)) : dispatch(setFilter((filterType || prevFilter), name));
+                    prevFilter = filterType;filterType === 'recommendations' || filterType === 'similar' ? prevId = id :  prevId = undefined;
+                }
+                
+                
+                counter = page;
+                filterType ? prevQuery = undefined : prevQuery = query;
+                
+                initial = false;
+                dispatch(setData(data));
             }
-            
-            prevFilter = filterType;
-            counter = page;
-            filterType ? prevQuery = undefined : prevQuery = query;
-            filterType === 'recommendations' || filterType === 'similar' ? prevId = id :  prevId = undefined;
-            initial = false;
-            dispatch(setData(data));
         }
     };
 }

@@ -10,7 +10,7 @@ export default class Header extends Component {
           <h1>Your favorite TV-shows</h1>
           <ActionLink>Popular</ActionLink>
           <ActionLink>On the air</ActionLink>
-          <ActionLink>Top</ActionLink>
+          <ActionLink>Top rated</ActionLink>
           <SearchForm />
       </header>
     );
