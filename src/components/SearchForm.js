@@ -27,7 +27,6 @@ let SearchForm = ({ dispatch, val }) => {
           ref={node => {
             input = node
           }}
-          //value={val}
         />
         <button type="submit">Search TV Show</button>
       </form>

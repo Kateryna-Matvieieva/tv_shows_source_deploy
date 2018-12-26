@@ -11,8 +11,8 @@ ReactDOM.render(<Provider store={store}>
                     <App />
                 </Provider>, document.getElementById('root'));
 
-// fetch(`https://api.themoviedb.org/3/search/tv?query=walking%20dead&page=1&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`)
-//           .then(res => {
-//            console.log(res.json())})
+fetch(`https://api.themoviedb.org/3/tv/44217/recommendations?page=2&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`)
+          .then(res => {
+           console.log(res.json())})
 
 serviceWorker.unregister();

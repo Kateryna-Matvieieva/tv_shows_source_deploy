@@ -9,8 +9,8 @@ function mapStateToProps (state) {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: ({filterType, page, query}) => {
-        dispatch(fetchTableData({filterType, page, query}));
+    onClick: ({filterType, page, query, id}) => {
+        dispatch(fetchTableData({filterType, page, query, id}));
     }
   }
 }

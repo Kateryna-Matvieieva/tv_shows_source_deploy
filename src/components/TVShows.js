@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ActionLink from './ActionLink';
 
 
 const TVShows = ({ item, img, genres, index }) => (
@@ -15,6 +16,10 @@ const TVShows = ({ item, img, genres, index }) => (
     <td onMouseEnter={(e) =>  e.currentTarget.innerText = item.overview}
         onMouseLeave={(e) =>  e.currentTarget.innerText = item.overview.slice(0, 350)+'.....'}
             >{item.overview.slice(0, 350)+'.....'}</td>
+     <td>
+       <ActionLink showId = {item.id}>Recommendations</ActionLink>
+       <ActionLink showId = {item.id}>Similar</ActionLink>
+     </td>
   </tr>
 )
 

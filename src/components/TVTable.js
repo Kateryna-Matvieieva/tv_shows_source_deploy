@@ -23,6 +23,7 @@ const TVTable = ({ state }) => {
           <th>First air date</th> 
           <th>Ganre</th>
           <th>Description</th>
+          <th>Details</th>
         </tr>
           {state.data.map((item, index) => (
             <TVShows key={index} item={ item } img={state.imgs[index]} genres={state.genres} index={state.currentPage*20-19+index}/>
