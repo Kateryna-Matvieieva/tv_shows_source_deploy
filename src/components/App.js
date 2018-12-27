@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Header';
 import TVTable from './TVTable';
 import { connect } from 'react-redux';
-import { setURL } from '../actions/actions';
+import { setURL, setFilter } from '../actions/actions';
 import { loadData, loadGenres } from '../actions/asyncActions';
 
 class App extends Component {
@@ -30,6 +30,7 @@ const mapDispatchToProps = (dispatch) => {
         let src = `https://api.themoviedb.org/3`;
         let url = `${src}/tv/popular?${key}&page=1`;
         dispatch(setURL(url))
+        dispatch(setFilter('popular'))
         dispatch(loadData({ url }));
 
     }

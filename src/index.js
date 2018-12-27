@@ -11,7 +11,7 @@ ReactDOM.render(<Provider store={store}>
                     <App />
                 </Provider>, document.getElementById('root'));
 
-fetch(`https://api.themoviedb.org/3/discover/tv?api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US&sort_by=first_air_date.asc`)
+fetch(`https://api.themoviedb.org/3/discover/tv?sort_by=revenue.desc&api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US&sort_by=first_air_date.asc`)
           .then(res => {
            console.log(res.json())})
 
