@@ -1,6 +1,8 @@
 import {
     START_REQUEST,
     GET_COUNT_OF_PAGES,
+    GET_PAGE,
+    GET_URL,
     GET_FILTER,
     GET_QUERY,
     GET_ERROR,
@@ -8,18 +10,21 @@ import {
     GET_GENRES
 } from '../constants/constants';
 
-export const setData = ({ results, page }) => ({
+export const setData = ({ results }) => ({
     type: GET_RESPONSE,
-    payload: {
-        results,
-        page
-    }
+    payload: results
+})
+export const setPage = ({ page }) => ({
+    type: GET_PAGE,
+    payload: page
 })
 export const setPages = ({ total_pages }) => ({
     type: GET_COUNT_OF_PAGES,
-    payload: {
-        countOfPages: total_pages
-    }
+    payload: total_pages
+})
+export const setURL = (url) => ({
+    type: GET_URL,
+    payload: url
 })
 export const setGenres = ({ genres }) => ({
     type: GET_GENRES,

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ActionLink from './ActionLink';
+// import ActionLink from './ActionLink';
+import FilterByItemLink from './FilterByItemLink';
 
 
 const TVShows = ({ item, img, genres, index }) => (
@@ -17,8 +18,10 @@ const TVShows = ({ item, img, genres, index }) => (
         onMouseLeave={(e) =>  e.currentTarget.innerText = item.overview.slice(0, 250)+'.....'}
             >{item.overview.slice(0, 350)+'.....'}</td>
      <td>
-       <ActionLink showId = {item.id} name = {item.name}>Recommendations</ActionLink>
-       <ActionLink showId = {item.id} name = {item.name}>Similar</ActionLink>
+       {/* <ActionLink showId = {item.id} name = {item.name}>Recommendations</ActionLink>
+       <ActionLink showId = {item.id} name = {item.name}>Similar</ActionLink> */}
+       <FilterByItemLink showId = {item.id} name = {item.name}>Recommendations</FilterByItemLink>
+       <FilterByItemLink showId = {item.id} name = {item.name}>Similar</FilterByItemLink>
      </td>
   </tr>
 )

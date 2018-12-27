@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTableData } from '../actions/asyncActions'
+import { loadData } from '../actions/asyncActions'
+import { setURL, setQuery, setPage } from '../actions/actions';
 
 let SearchForm = ({ dispatch }) => {
   let input;
@@ -9,7 +10,14 @@ let SearchForm = ({ dispatch }) => {
     if (!input.value.trim()) {
       return
     }
-    dispatch(fetchTableData({ query: encodeURIComponent(input.value.trim())}))
+    let key = `api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`;
+    let src = `https://api.themoviedb.org/3`;
+    let query = encodeURIComponent(input.value.trim()); 
+    let url = `${src}/search/tv?query=${query}&${key}`;
+    dispatch(setURL(url))
+    dispatch(setPage({page: 1}))
+    dispatch(setQuery(query))
+    dispatch(loadData({ url }))
   }
 
   return (

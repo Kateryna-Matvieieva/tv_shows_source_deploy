@@ -1,6 +1,8 @@
 import {    
       START_REQUEST,
       GET_COUNT_OF_PAGES,
+      GET_PAGE,
+      GET_URL,
       GET_FILTER,
       GET_QUERY,
       GET_ERROR,
@@ -26,22 +28,32 @@ export function rootReducer (state, action) {
                 error: null
               };
             case GET_RESPONSE:
-              let imgs = action.payload.results.map(item => {
+              let imgs = action.payload.map(item => {
                   let obj = new Image ();
                   obj.src = item.poster_path ? 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/'+item.poster_path : 'download.png';
                   return obj;
               });
               return {
                 ...state,
-                data: action.payload.results,
-                currentPage: action.payload.page,
+                data: action.payload,
                 imgs,
                 loading: false
+              };
+            case GET_PAGE:
+            console.log("reducer", action.payload)
+              return {
+                ...state,
+                currentPage: action.payload
+              };
+            case GET_URL:
+              return {
+                ...state,
+                url: action.payload
               };
             case GET_COUNT_OF_PAGES:
               return {
                 ...state,
-                ...action.payload
+                countOfPages: action.payload
               };
             case GET_FILTER:
               return {

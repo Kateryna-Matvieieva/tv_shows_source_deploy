@@ -13,6 +13,7 @@ const initialState = {
     query: '',
     countOfPages: 1,
     currentPage: 1,
+    url: ''
   }
   
 export const store = createStore(rootReducer, initialState,  applyMiddleware(thunk, logger))

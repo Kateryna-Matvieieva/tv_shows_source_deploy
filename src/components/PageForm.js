@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTableData } from '../actions/asyncActions'
+import { setPage } from '../actions/actions'
+import { loadData } from '../actions/asyncActions'
 
-let PageForm = ({ dispatch }) => {
+let PageForm = ({ dispatch, url }) => {
   let input;
 
   return (
@@ -10,11 +11,12 @@ let PageForm = ({ dispatch }) => {
       <form
         onSubmit ={e => {
             e.preventDefault()
-            if (!input.value.trim() ||  typeof +input.value.trim() !== 'number') {
+            let page = input.value.trim();          
+            if (!page ||  typeof +page !== 'number') {
               return
             }
-            
-            dispatch(fetchTableData({ page: input.value.trim()}))
+            dispatch(setPage({ page }))
+            dispatch(loadData({ url, page }))
             input.value = ''
         }}
       >
@@ -28,6 +30,11 @@ let PageForm = ({ dispatch }) => {
     </div>
   )
 }
-PageForm = connect()(PageForm)
+function mapStateToProps (state) {
+  return {
+    url: state.url
+  }
+}
+PageForm = connect(mapStateToProps)(PageForm)
 
 export default PageForm

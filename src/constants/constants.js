@@ -5,3 +5,5 @@ export const GET_QUERY = 'GET_QUERY';
 export const GET_ERROR = 'GET_ERROR';
 export const GET_RESPONSE = 'GET_RESPONSE';
 export const GET_GENRES = 'GET_GENRES';
+export const GET_PAGE = 'GET_PAGE';
+export const GET_URL = 'GET_URL';
