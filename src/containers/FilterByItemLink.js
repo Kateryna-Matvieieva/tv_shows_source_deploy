@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { loadData } from '../actions/asyncActions';
+import FilterByItem from '../components/FilterByItem';
 import { setURL, setFilter, setPage } from '../actions/actions';
-import Filter from './Filter';
+
 function mapStateToProps (state) {
   return {
     currentPage: state.currentPage,
@@ -10,20 +11,20 @@ function mapStateToProps (state) {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: ({filterType}) => {
+    onClick: ({filterType, id, name}) => {
         let key = `api_key=696d475c5616f9c15214877fbdf5bd6e&language=en-US`;
         let src = `https://api.themoviedb.org/3`;
-        let url = `${src}/tv/${filterType||'popular'}?${key}`;
-        dispatch(setURL(url))
-        dispatch(setFilter(filterType))
-        dispatch(setPage({page: 1}))
-        dispatch(loadData({url}))
+        let url = `${src}/tv/${id}/${filterType}?&${key}`;
+        dispatch(setURL(url));
+        dispatch(setFilter(filterType, name))
+        dispatch(setPage({ page: 1 }))
+        dispatch(loadData({ url }))
     }
   }
 }
 
-const FilterLink = connect( mapStateToProps,
+const FilterByItemLink = connect( mapStateToProps,
   mapDispatchToProps
-)(Filter)
+)(FilterByItem)
 
-export default FilterLink
+export default FilterByItemLink

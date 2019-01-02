@@ -11,11 +11,10 @@ const Page = ({ children, onClick, currentPage, countOfPages, url }) => {
             let page;
             switch(children) {
                 case 'next':
-                    currentPage < countOfPages ? onClick({ page: page+1, url  }) : page = countOfPages;
-                    onClick({ page, url });
+                    currentPage < countOfPages ? onClick({ page: currentPage+1, url  }) : page = countOfPages;
                     break;
                 case 'prev':
-                    currentPage > 1 ?onClick({ page: page-1, url  }): page = 1;
+                    currentPage > 1 ?onClick({ page: currentPage-1, url  }): page = 1;
                     break;
                 default:
                     break;

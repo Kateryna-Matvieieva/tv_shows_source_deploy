@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import SearchForm from './SearchForm';
-import FilterLink from './FilterLink';
-import SortForm from './SortForm';
+import SearchForm from '../containers/SearchForm';
+import FilterLink from '../containers/FilterLink';
+import SortForm from '../containers/SortForm';
 
 export default class Header extends Component {
   render() {

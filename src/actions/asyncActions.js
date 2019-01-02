@@ -26,7 +26,6 @@ export function loadData({
     return async (dispatch) => {
         dispatch(isLoading(true));
         let response = await fetch(`${url}&page=${page}`);
-        console.log(`load data`, `${url}&page=${page}`);
         if (response.status !== 200) {
             dispatch(error(true));
         } else {
@@ -34,7 +33,6 @@ export function loadData({
             if (data.results.length < 1) {
                 dispatch(error(true));
             } else {
-                console.log(data)
                 dispatch(setPages(data));
                 dispatch(setData(data));
             }

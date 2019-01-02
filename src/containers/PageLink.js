@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { loadData } from '../actions/asyncActions';
 import { setPage } from '../actions/actions';
-import Page from './Page';
+import Page from '../components/Page';
 
 function mapStateToProps (state) {
   return {

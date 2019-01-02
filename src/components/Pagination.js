@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PageLink from './PageLink';
-import PageForm from './PageForm';
+import PageLink from '../containers/PageLink';
+import PageForm from '../containers/PageForm';
 
 const Pagination = ({currentPage, countOfPages, url}) => {
     let num=  countOfPages > 9 ? 9 : countOfPages;
@@ -12,7 +12,7 @@ const Pagination = ({currentPage, countOfPages, url}) => {
           <p>Page {currentPage} from {countOfPages}</p>
           <PageLink url={url}>prev</PageLink>
           {arr.map((item, index) => (
-              <PageLink url={url} key={index}>{currentPage < countOfPages-currentPage ? currentPage + index : countOfPages + index +1 - arr.length}</PageLink>
+              <PageLink url={url} key={index}>{currentPage+num < countOfPages-currentPage ? currentPage + index : countOfPages + index +1 - arr.length}</PageLink>
               ))}
           <PageLink url={url}>next</PageLink>
           <PageForm />

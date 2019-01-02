@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import ActionLink from './ActionLink';
-import FilterByItemLink from './FilterByItemLink';
+import FilterByItemLink from '../containers/FilterByItemLink';
 
 
 const TVShows = ({ item, img, genres, index }) => (
@@ -12,14 +11,12 @@ const TVShows = ({ item, img, genres, index }) => (
       <img src={img.src || '../download.png'} alt="Poster" width="165" height="268" />
     </td>
     <td>{Math.round(item.popularity)}</td>
-    <td>{item.first_air_date.slice(0, 4)}</td>
+    <td>{item.first_air_date}</td>
     <td>{item.genre_ids.map(item => genres[item]).filter(item => item !== undefined).join(', ')}</td>
     <td onMouseEnter={(e) =>  e.currentTarget.innerText = item.overview}
         onMouseLeave={(e) =>  e.currentTarget.innerText = item.overview.slice(0, 250)+'.....'}
             >{item.overview.slice(0, 350)+'.....'}</td>
      <td>
-       {/* <ActionLink showId = {item.id} name = {item.name}>Recommendations</ActionLink>
-       <ActionLink showId = {item.id} name = {item.name}>Similar</ActionLink> */}
        <FilterByItemLink showId = {item.id} name = {item.name}>Recommendations</FilterByItemLink>
        <FilterByItemLink showId = {item.id} name = {item.name}>Similar</FilterByItemLink>
      </td>

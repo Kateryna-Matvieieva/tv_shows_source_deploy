@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.css';
 import Header from './Header';
 import TVTable from './TVTable';
 import { connect } from 'react-redux';

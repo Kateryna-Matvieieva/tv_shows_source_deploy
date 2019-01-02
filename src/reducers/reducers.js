@@ -40,7 +40,6 @@ export function rootReducer (state, action) {
                 loading: false
               };
             case GET_PAGE:
-            console.log("reducer", action.payload)
               return {
                 ...state,
                 currentPage: action.payload
