@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {loadData} from '../actions/asyncActions';
 import {setURL, setPage, setFilter} from '../actions/actions';
 
-let SortForm = ({dispatch, genres}) => {
+let SortForm = ({ dispatch, genres }) => {
 
   let year,
     withGenre,
@@ -56,7 +56,7 @@ let SortForm = ({dispatch, genres}) => {
       }}>
         <div class="sort-container">
           <div className="select-class">
-            <label for="with_genres">With genres</label>
+            <label htmlFor="with_genres">With genres</label>
             <Select
               name="with_genres"
               isMulti={true}
@@ -68,7 +68,7 @@ let SortForm = ({dispatch, genres}) => {
           </div>
 
           <div className="select-class">
-            <label for="without_genres">Without genres</label>
+            <label htmlFor="without_genres">Without genres</label>
             <Select
               name="without_genres"
               isMulti={true}
@@ -80,7 +80,7 @@ let SortForm = ({dispatch, genres}) => {
           </div>
 
           <div className="select-class">
-            <label for="Sort">Sort</label>
+            <label htmlFor="Sort">Sort</label>
             <Select
               name="Sort"
               ref={node => {
@@ -106,9 +106,9 @@ let SortForm = ({dispatch, genres}) => {
             ]}/>
           </div>
         </div>
-        <div class="sort-container">
+        <div className="sort-container">
           <div className="select-class">
-            <label for="year">Year of release</label>
+            <label htmlFor="year">Year of release</label>
             <input
               name="year"
               placeholder="Type year of release"
@@ -116,7 +116,7 @@ let SortForm = ({dispatch, genres}) => {
               year = node
             }}/>
           </div>
-          <button className="submit-buttom" type="submit">Sort TV Show</button>
+          <button className="submit-button" type="submit">Sort TV Show</button>
         </div>
       </form>
     </div>

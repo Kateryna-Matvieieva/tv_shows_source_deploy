@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FilterByItem = ({children, showId, onClick, name}) => {
+const FilterByItem = ({ children, showId, onClick, name }) => {
 
   return (
     <a
@@ -10,10 +10,10 @@ const FilterByItem = ({children, showId, onClick, name}) => {
       e.preventDefault();
       switch (children) {
         case 'Recommendations':
-          onClick({filterType: 'recommendations', id: showId, name});
+          onClick({ filterType: 'recommendations', id: showId, name });
           break;
         case 'Similar':
-          onClick({filterType: 'similar', id: showId, name});
+          onClick({ filterType: 'similar', id: showId, name });
           break;
         default:
           break;
@@ -26,7 +26,9 @@ const FilterByItem = ({children, showId, onClick, name}) => {
 
 FilterByItem.propTypes = {
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  showId: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 export default FilterByItem;

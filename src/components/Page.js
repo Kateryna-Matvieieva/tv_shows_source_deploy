@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Page = ({children, onClick, currentPage, countOfPages, url}) => {
+const Page = ({ children, onClick, currentPage, countOfPages, url }) => {
 
   return (
     <a
@@ -32,14 +32,17 @@ const Page = ({children, onClick, currentPage, countOfPages, url}) => {
       if (typeof children == 'number') 
         onClick({page: children, url});
       }}>
-      <button>{children}</button>
+      <button>{ children }</button>
     </a>
   )
 }
 
 Page.propTypes = {
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  countOfPages: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired
 }
 
 export default Page;

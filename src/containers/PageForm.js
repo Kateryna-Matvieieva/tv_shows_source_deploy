@@ -27,7 +27,7 @@ let PageForm = ({dispatch, url}) => {
           ref={node => {
           input = node
         }}/>
-        <button type="submit">Go to page</button>
+        <button className="submit-button" type="submit">Go to page</button>
       </form>
     </div>
   )

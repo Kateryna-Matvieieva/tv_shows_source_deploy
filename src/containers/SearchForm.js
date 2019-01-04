@@ -30,14 +30,14 @@ let SearchForm = ({dispatch}) => {
         handler(e);
         input.value = '';
       }}>
-        <label for="title">Search</label>
+        <label htmlFor="title">Search</label>
         <input
           name="title"
           placeholder="Type title of TV Show"
           ref={node => {
           input = node
         }}/>
-        <button className="submit-buttom" type="submit">Search TV Show</button>
+        <button className="submit-button" type="submit">Search TV Show</button>
       </form>
     </div>
   )

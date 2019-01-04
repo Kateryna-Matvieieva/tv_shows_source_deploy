@@ -1,35 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import TVShows from './TVShows';
-import Pagination from './Pagination';
+import TVShows from '../components/TVShows';
+import Pagination from '../components/Pagination';
+import Loading from '../components/Loading';
+import IsError from '../components/IsError';
+import Title from '../components/Title';
 import {connect} from 'react-redux';
 
-const TVTable = ({state}) => {
+const TVTable = ({ state, title }) => {
   if (state.error) {
     return (
-      <div class="no-data-container">
-        <img
-          src="https://webmarketingschool.com/wp-content/uploads/2018/03/nojobsfound.png"
-          alt="Sorry, here is an error"/>
-      </div>
+      <IsError />
     )
   }
   if (state.loading) {
     return (
-      <div class="no-data-container">
-        <img
-          src="https://loading.io/spinners/microsoft/lg.rotating-balls-spinner.gif"
-          alt="Loading..."/>
-      </div>
+      <Loading />
     )
   }
   return (
     <div class="tv-table">
-      <h2>{state.query
-          ? `The result on "${state.query}" query search`
-          : state.name
-            ? `TV Shows ${state.filter} to ${state.name}`
-            : `TV Shows filtered by "${state.filter}"`}</h2>
+      <Title state={title}/>
       <Pagination/>
       <table>
         <tbody>
@@ -58,7 +48,9 @@ const TVTable = ({state}) => {
 }
 
 function mapStateToProps(state) {
-  return {state: state}
+  return {
+    title: {query: state.query, name: state.name, filter: state.filter},
+    state: state}
 }
 
 export default connect(mapStateToProps)(TVTable);

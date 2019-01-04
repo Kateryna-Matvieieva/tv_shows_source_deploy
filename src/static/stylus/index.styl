@@ -35,14 +35,14 @@ button
 
 button:hover,
 button:focus
-    background: rgb(0, 136, 204);
+    background: rgb(0, 179, 179);
 
 
 button:active 
     transform: scale(0.99);
 
-.submit-buttom
-    background: rgb(0, 179, 179);
+.submit-button
+    background: rgb(153, 240, 255);
     border: none;
 
 input
@@ -64,17 +64,32 @@ table
 
 table, th, td
     border-bottom: solid 2px rgba(0, 179, 179, 0.85);
-    
+
+td
+    padding: 5px;
+
 PageLink, PageForm 
     display: inline-block;
 
 Header 
     background: rgba(190, 190, 190, 0.82);
+    border-top: solid 2px rgba(0, 179, 179, 0.85);
+    border-bottom: solid 2px rgba(0, 179, 179, 0.85);
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.45);
     padding: 15px;
     margin-bottom: 15px;
 
 .tv-table 
     background: rgba(225, 225, 225, 0.82);
+    border-top: solid 2px rgba(0, 179, 179, 0.85);
+    border-bottom: solid 2px rgba(0, 179, 179, 0.85);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.45)
     padding: 15px;
     margin-bottom: 15px
 
@@ -91,10 +106,13 @@ Header
     justify-content: flex-start;
     padding-bottom: 15px; 
 
-.filter-container, .sort-container
+.filter-container, .sort-container, .container
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 15px;
+
+.page-container
+    display: inline-block;
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Filter = ({children, showId, onClick, name}) => {
+const Filter = ({ children, onClick }) => {
 
   return (
     <a
@@ -10,19 +10,19 @@ const Filter = ({children, showId, onClick, name}) => {
       e.preventDefault();
       switch (children) {
         case 'Popular':
-          onClick({filterType: 'popular'});
+          onClick({ filterType: 'popular' });
           break;
         case 'On the air':
-          onClick({filterType: 'on_the_air'});
+          onClick({ filterType: 'on_the_air' });
           break;
         case 'Top rated':
-          onClick({filterType: 'top_rated'});
+          onClick({ filterType: 'top_rated' });
           break;
         default:
           break;
       }
     }}>
-      <button>{children}</button>
+      <button>{ children }</button>
     </a>
   )
 }

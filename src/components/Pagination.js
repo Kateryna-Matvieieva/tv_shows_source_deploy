@@ -1,33 +1,25 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import PagesContainer from '../containers/PagesContainer';
 import PageLink from '../containers/PageLink';
 import PageForm from '../containers/PageForm';
 
-const Pagination = ({currentPage, countOfPages, url}) => {
-  let num = countOfPages > 9
-    ? 9
-    : countOfPages;
-  let arr = new Array(num).fill(undefined);
+const Pagination = ({ url }) => {
 
   return (
     <div>
-      <p>Page {currentPage}
-        from {countOfPages}</p>
-      <div class="page-container">
-        <PageLink url={url}>prev</PageLink>
-        {arr.map((item, index) => (
-          <PageLink url={url} key={index}>{currentPage + num < countOfPages - currentPage
-              ? currentPage + index
-              : countOfPages + index + 1 - arr.length}</PageLink>
-        ))}
-        <PageLink url={url}>next</PageLink>
-        <PageForm/>
-      </div>
-    </div>
+        <PagesContainer url={url}>
+            <PageLink url={url}>prev</PageLink>
+            <PageLink url={url}>next</PageLink>
+            <PageForm/>
+        </PagesContainer>
+     </div>
+
   );
 }
 
-function mapStateToProps(state) {
-  return {currentPage: state.currentPage, countOfPages: state.countOfPages}
+Pagination.propTypes = {
+  url: PropTypes.string.isRequired
 }
-export default connect(mapStateToProps)(Pagination);
+
+export default Pagination;

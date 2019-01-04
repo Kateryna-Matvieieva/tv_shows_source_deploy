@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import FilterByItemLink from '../containers/FilterByItemLink';
+import PropTypes from 'prop-types';
 
 const TVShows = ({item, img, genres, index}) => (
   <tr>
     <td>{index}</td>
-    <td>{item.name} {/* <img src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2/'+item.poster_path} /> */}
+    <td>{item.name}
       <img src={img.src || '../download.png'} alt="Poster" width="165" height="268"/>
     </td>
     <td>{Math.round(item.popularity)}</td>
@@ -27,7 +27,11 @@ const TVShows = ({item, img, genres, index}) => (
   </tr>
 )
 
-// Todo.propTypes = {   onClick: PropTypes.func.isRequired,   completed:
-// PropTypes.bool.isRequired,   text: PropTypes.string.isRequired }
+TVShows.propTypes = {
+  item: PropTypes.object.isRequired,
+  img: PropTypes.object.isRequired,
+  genres: PropTypes.array.isRequired,
+  index: PropTypes.number.isRequired
+}
 
-export default TVShows
+export default TVShows;
