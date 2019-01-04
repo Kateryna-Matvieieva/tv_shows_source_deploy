@@ -1,30 +1,29 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Filter = ({ children, showId, onClick, name }) => {
-   
-    return (
-        <a
-        href="/"
-        onClick={e => {
-            e.preventDefault();
-            switch(children) {
-                case 'Popular':
-                    onClick({ filterType: 'popular' });
-                    break;
-                case 'On the air':
-                    onClick({ filterType: 'on_the_air'});
-                    break;
-                case 'Top rated':
-                    onClick({ filterType: 'top_rated' });
-                    break;
-                default:
-                    break;
-            }
-        }}
-        >
-        <button>{children}</button>
-        </a>
+const Filter = ({children, showId, onClick, name}) => {
+
+  return (
+    <a
+      href="/"
+      onClick={e => {
+      e.preventDefault();
+      switch (children) {
+        case 'Popular':
+          onClick({filterType: 'popular'});
+          break;
+        case 'On the air':
+          onClick({filterType: 'on_the_air'});
+          break;
+        case 'Top rated':
+          onClick({filterType: 'top_rated'});
+          break;
+        default:
+          break;
+      }
+    }}>
+      <button>{children}</button>
+    </a>
   )
 }
 
@@ -33,4 +32,4 @@ Filter.propTypes = {
   onClick: PropTypes.func.isRequired
 }
 
-export default Filter
+export default Filter;
