@@ -30,7 +30,7 @@ const TVShows = ({item, img, genres, index}) => (
 TVShows.propTypes = {
   item: PropTypes.object.isRequired,
   img: PropTypes.object.isRequired,
-  genres: PropTypes.array.isRequired,
+  genres: PropTypes.object,
   index: PropTypes.number.isRequired
 }
 

@@ -34,7 +34,7 @@ Pages.propTypes = {
   children: PropTypes.array.isRequired,
   currentPage: PropTypes.number.isRequired,
   countOfPages: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string
 }
 
 export default Pages;

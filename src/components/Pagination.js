@@ -19,7 +19,7 @@ const Pagination = ({ url }) => {
 }
 
 Pagination.propTypes = {
-  url: PropTypes.string.isRequired
+  url: PropTypes.string
 }
 
 export default Pagination;

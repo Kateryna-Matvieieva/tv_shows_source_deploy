@@ -18,7 +18,7 @@ const TVTable = ({ state, title }) => {
     )
   }
   return (
-    <div class="tv-table">
+    <div className="tv-table">
       <Title state={title}/>
       <Pagination/>
       <table>

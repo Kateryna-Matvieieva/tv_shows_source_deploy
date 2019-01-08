@@ -54,7 +54,7 @@ let SortForm = ({ dispatch, genres }) => {
       <form onSubmit ={e => {
         handler(e)
       }}>
-        <div class="sort-container">
+        <div className="sort-container">
           <div className="select-class">
             <label htmlFor="with_genres">With genres</label>
             <Select
