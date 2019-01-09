@@ -28,7 +28,7 @@ const TVTable = ({ state, title }) => {
             <th>Title</th>
             <th>Popularity</th>
             <th>Year</th>
-            <th>Ganre</th>
+            <th>Genre</th>
             <th>Description</th>
             <th>Details</th>
           </tr>

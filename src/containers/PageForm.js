@@ -12,10 +12,10 @@ let PageForm = ({dispatch, url}) => {
         onSubmit
         ={e => {
         e.preventDefault()
-        let page = input
+        let page = + input
           .value
           .trim();
-        if (!page || typeof + page !== 'number') {
+        if (!page || typeof page !== 'number') {
           return
         }
         dispatch(setPage({page}));
