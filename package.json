@@ -2,7 +2,7 @@
   "name": "react-redux-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://katerynamatvjejeva.github.io/tv-shows-app/",
+  "homepage": "https://katerynamatvjejeva.github.io/tv_shows_source_deploy/",
   "dependencies": {
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
